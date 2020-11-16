@@ -17,7 +17,7 @@ describe('Feed', () => {
             ]
           },
           frontmatter: {
-            date: '2016-09-01',
+            date: '2016-08-31',
             description: 'test_0',
             category: 'test_0',
             tags: [
