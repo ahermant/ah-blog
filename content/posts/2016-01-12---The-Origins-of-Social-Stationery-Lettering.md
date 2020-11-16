@@ -17,7 +17,7 @@ It is an example of implementation of an MSAL authentication with [Vue2](https:/
 
 ## Azure portal setup
 
-To setup your Azure portal you can follow [this guideline].(https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration)
+To setup your Azure portal you can follow [this guideline](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
 
 Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
 
