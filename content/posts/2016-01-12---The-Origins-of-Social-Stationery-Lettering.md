@@ -13,9 +13,11 @@ description: It is an example of implementation of an MSAL authentication with
   with our APIs.
 category: VueJS
 ---
-**Azure portal setup**\
-\
-**Pellentesque habitant morbi tristique** senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. *Aenean ultricies mi vitae est.* Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+It is an example of implementation of an MSAL authentication with [Vue2](https://vuejs.org/) and [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser). In this example we will setup a VueJS plugin, load it and use it to authenticate our user on an SPA. The authentication is in redirect mode, does not require a backend server but will provide a [JWT access token v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens) that we will be able to use in our Authorization header to communicate with our APIs.
+
+## Azure portal setup
+
+To setup your Azure portal you can follow [this guideline].(https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration)
 
 Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
 
