@@ -21,7 +21,7 @@ To setup your Azure portal for MSAL 2.0 you can follow [this guideline](https://
 
 ## Modules installation
 
-We need the following modules to set up our authentication flow:
+We need the following module to set up our authentication flow:
 - [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
