@@ -2,7 +2,7 @@
 template: post
 title: MSAL authentication with Vue 2
 slug: msal-authentication-with-vue-2
-socialImage: /media/image-3.jpg
+socialImage: /media/vue.js_logo_2.svg
 draft: true
 date: 2020-11-16T20:43:27.244Z
 description: It is an example of implementation of an MSAL authentication with
@@ -17,11 +17,14 @@ It is an example of implementation of an MSAL authentication with [Vue2](https:/
 
 ## Azure portal setup
 
-To setup your Azure portal you can follow [this guideline](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
+To setup your Azure portal for MSAL 2.0 you can follow [this guideline](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
+
+## Modules installation
+
+We need the following modules to set up our authentication flow:
+- [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
-
-![Nulla faucibus vestibulum eros in tempus. Vestibulum tempor imperdiet velit nec dapibus](/media/image-3.jpg)
 
 ## Header Level 2
 
@@ -55,5 +58,3 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 ```
 
 Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
-
-![Test SVG](/media/cpu.svg)
