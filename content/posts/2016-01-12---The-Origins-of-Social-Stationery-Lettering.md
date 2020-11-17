@@ -15,6 +15,9 @@ category: VueJS
 ---
 It is an example of implementation of an MSAL authentication with [Vue2](https://vuejs.org/) and [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser). In this example we will setup a VueJS plugin, load it and use it to authenticate our user on an SPA. The authentication is in redirect mode, does not require a backend server but will provide a [JWT access token v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens) that we will be able to use in our Authorization header to communicate with our APIs.
 
+## Pre-requisites
+You need to have a vue app up and running and the Node Packet Manager installed on your computer.
+
 ## Azure portal setup
 
 To setup your Azure portal for MSAL 2.0 you can follow [this guideline](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
@@ -22,9 +25,13 @@ To setup your Azure portal for MSAL 2.0 you can follow [this guideline](https://
 ## Modules installation
 
 We need the following module to set up our authentication flow:
-- [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
-Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
+* [msal-browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) which will be the base of our authentication flow
+* [msal](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) which will allow use to catch the `InteractionRequiredAuthError` generated when we try to acquire a token for a non-authenticated user
+
+You can install them by using NPM with the following command:
+
+`npm install @azure/msal-browser msal`
 
 ## Header Level 2
 
