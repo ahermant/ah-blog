@@ -14,22 +14,23 @@ tags:
   - VueJS
   - authentication
 ---
-Due to the multiple redirects and iframes, it can be pretty painful to authenticate with Cypress on an app with MSAL 2.0. However, it is possible to bypass the authentication step by using an Azure client secret.  
-If you use the MSAL mode `redirect` and get an access token to authenticate to your backend APIs, here is a method. It is far from ideal since the changes in the msal-browser library but it can unblock a difficult situation.
+Due to the multiple redirects and iframes, it can be pretty painful to authenticate with [Cypress](https://www.cypress.io/) on an app with the [msal-browser library](https://www.npmjs.com/package/@azure/msal-browser) of MSAL 2.0. However, it is possible to bypass the authentication step by using an [Azure application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret).  
+If you use the MSAL mode `redirect` and get an [access token](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) to authenticate to your backend APIs, here is a method.  
+It is far from ideal since the changes in the [msal-browser library](https://www.npmjs.com/package/@azure/msal-browser) can break the code but it can unblock a difficult situation.
 In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage".  
 If you need an example with some sessionstorage, please look to jabberwik's answer on [this thread](https://stackoverflow.com/a/63490929)  
 
 ## Pre-requisites
-To start we need an up and running VueJS application using the msal-browser library to authenticate with MSAL 2.0.  
+To start we need an up and running VueJS application using the [msal-browser library](https://www.npmjs.com/package/@azure/msal-browser) to authenticate with MSAL 2.0.  
 To get some useful commands to manipulate the localstorage with Cypress we need to install the [Cypress localstorage commands module](https://www.npmjs.com/package/cypress-localstorage-commands).  
 
 It can be done with  
 
 `npm i --save-dev cypress-localstorage-commands`
 
-## Creation of a client secret
+## Creation of an Azure application secret
 
-Finally create a client secret for your app by following [this process](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret). Keep it preciously for our next steps.
+Finally create Azure application secret for your app by following [this process](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret). Keep it preciously for our next steps.
 
 ## Command setup
 
@@ -39,14 +40,14 @@ In the `commands.js` file, import `cypress-localstorage-commands` to be able to 
 
 `import "cypress-localstorage-commands"`
 
-Now create a Cypress command named `login`. We will use this command to call the [Microsoft OAuth2 token API](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) to get an access token and then create some fake localstorage info including the token.
+Now create a Cypress command named `login`. We will use this command to call the [Microsoft OAuth2 token API](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) to get an [access token](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) and then create some fake localstorage info including the token.
 
 ``` javascript
 Cypress.Commands.add("login", () => {
 })
 ```
 
-Let us set some variables with the information we need to request the access token.
+Let us set some variables with the information we need to request the access token. Here we will use the Cypress environments variable. To set them, just set some environment variableswith the `CYPRESS_` prefix on the environment used to launch Cypress.
 
 ``` javascript
 Cypress.Commands.add("login", () => {
@@ -57,7 +58,7 @@ Cypress.Commands.add("login", () => {
 })
 ```
 
-Now we do the request to get the token from the client secret
+Now we do the request to get the access token with the application secret
 
 ``` javascript
     cy.request({
