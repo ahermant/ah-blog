@@ -58,7 +58,7 @@ Cypress.Commands.add("login", () => {
 })
 ```
 
-Now we do the request to get the access token with the application secret
+Now we do the request to get the access token with the [application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret)
 
 ``` javascript
     cy.request({
