@@ -12,18 +12,63 @@ tags:
   - Handwriting
   - Learning to write
 ---
-Due to the multiple redirects and iframes, it can be pretty painful to authenticate with Cypress on an app with MSAL 2.0. However, it is possible to pass the authentication step by using an Azure client secret. Here is how.
+Due to the multiple redirects and iframes, it can be pretty painful to authenticate with Cypress on an app with MSAL 2.0. However, it is possible to bypass the authentication step by using an Azure client secret.  
+If you use the MSAL mode `redirect` and get an access token to authenticate to your backend APIs, here is how:
 
 ## Pre-requisites
-To start we need an up and running VueJS application using the msal-browser library to authenticate with MSAL 2.0.
-In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage"
+To start we need an up and running VueJS application using the msal-browser library to authenticate with MSAL 2.0.  
+In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage".  
 To get some useful commands to manipulate the localstorage with Cypress we need to install the [Cypress localstorage commands module](https://www.npmjs.com/package/cypress-localstorage-commands).  
 
 It can be done with  
 
 `npm i --save-dev cypress-localstorage-commands`
 
-## 
+Finally create a client secret for your app by following [this process](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret) and keep it preciously.
+
+## Command setup
+
+Next, if you do not already have one, create a `commands.js` file in the Cypress support folder (For more info about this folder location refer to the  [Cypress folder structure](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure).
+
+In the `commands.js` file, import `cypress-localstorage-commands` to be able to use it.
+
+`import "cypress-localstorage-commands"`
+
+Now create a Cypress command named `login`. We will use this command to call the [Microsoft OAuth2 token API](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) to get an access token and then create some fake localstorage info including the token.
+
+``` javascript
+Cypress.Commands.add("login", () => {
+    const clientId = Cypress.env('CLIENT_ID') // Your application client ID available in the overview of your app
+    const clientSecret = Cypress.env('CLIENT_SECRET') // The client Id that you have generated
+    const localAccountId = Cypress.env('LOCAL_ACCOUNT_ID') // the localAccountId in the field mainTokenResponse of your localstorage when authenticated with the Cypress user account
+    const scope = Cypress.env('SCOPE') // the scope you want to connect to. For example User.Read   
+    const tenantId = Cypress.env('TENANT_ID') // directory (tenant) ID displayed in the Overview of your Azure app
+    const username = Cypress.env('USERNAME') // The username displayed in the mainTokenResponse when you log in with this account
+    const name = Cypress.env('NAME') // The name displayed in the mainTokenResponse when you log in with this account
+    const user = Cypress.env('USER') // Do not forget to set the user data that your application needs to work properly. The client secret is not linked to any user
+
+    cy.request({
+        method: 'POST',
+        url: `https://login.microsoftonline.com/${tenantId}/oauth2/token/`,
+        form: true,
+        body: {
+            grant_type: 'client_credentials',
+            client_id: clientId,
+            client_info: 1,
+            client_secret: clientSecret,
+            scope: [scope]
+        }
+    }).then(response => {
+        const token = response.body.access_token;
+        const clientInfo = response.body.client_info;
+        cy.setLocalStorage(`${localAccountId}.${tenantId}-login.windows.net-accesstoken-${clientId}-${tenantId}-${scope}`, `{"homeAccountId":"${localAccountId}.${tenantId}","credentialType":"AccessToken","secret":"${token}","cachedAt":"1602169142","expiresOn":"1602176233","extendedExpiresOn":"1602309832","environment":"login.windows.net","clientId":"${clientId}","realm":"${tenantId}","target":"${scope}"}`);
+        cy.setLocalStorage(`${localAccountId}.${tenantId}-login.windows.net-${tenantId}`, `{"authorityType":"MSSTS","clientInfo":"${clientInfo}","homeAccountId":"${localAccountId}.${tenantId}","environment":"login.windows.net","realm":"${tenantId}","localAccountId":"${localAccountId}","username":"${username}","name":"${name}"}`);
+        cy.setLocalStorage(`${localAccountId}.${tenantId}-login.windows.net-idtoken-${clientId}-${tenantId}-`, `{"credentialType":"IdToken","homeAccountId":"${localAccountId}.${tenantId}","environment":"login.windows.net","clientId":"${clientId}","secret":"${token}","realm":"${tenantId}"}`);
+        cy.setLocalStorage(`mainTokenResponse`, `{"accessToken":"${token}", "account":{"homeAccountId": "${localAccountId}.${tenantId}","environment": "login.windows.net","tenantId": "${tenantId}","username": "${username}","name": "${name}"}}`);
+        cy.setLocalStorage("user", user); 
+    })
+})
+``` 
 
 
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. 
