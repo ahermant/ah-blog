@@ -2,7 +2,7 @@
 template: post
 title: Use Cypress with VueJS and MSAL 2.0
 slug: cypress-vue-msal
-socialImage: /media/vue.js_logo_2.svg
+socialImage: /media/cypress.webp
 draft: true
 date: 2020-11-17T22:22:52.051Z
 description: A few explanations on how to authenticate with Cypress on Azure
@@ -16,8 +16,8 @@ tags:
 ---
 Due to the multiple redirects and iframes, it can be pretty painful to authenticate with Cypress on an app with MSAL 2.0. However, it is possible to bypass the authentication step by using an Azure client secret.  
 If you use the MSAL mode `redirect` and get an access token to authenticate to your backend APIs, here is a method. It is far from ideal since the changes in the msal-browser library but it can unblock a difficult situation.
-In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage". If you need an example  
-
+In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage".  
+If you need an example with some sessionstorage, please look to jabberwik's answer on [this thread](https://stackoverflow.com/a/63490929)  
 
 ## Pre-requisites
 To start we need an up and running VueJS application using the msal-browser library to authenticate with MSAL 2.0.  
