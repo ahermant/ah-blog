@@ -149,7 +149,7 @@ afterEach(() => {
 
 describe('Logging in - Azure authentication', function () {
 
-    context('Logs to ADAL', function () {
+    context('Logs to Azure', function () {
         it('Sets the local storage to log to MSAL', function () {
             cy.login()
         })
