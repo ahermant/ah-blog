@@ -136,7 +136,7 @@ Cypress.Commands.add("login", () => {
 
 ## Use the command
 
-In order to do use the command, et the following in your `support/index.js` file
+In order to do use the command, add the following code in your `support/index.js` file
 
 ``` javascript
 import './commands'
