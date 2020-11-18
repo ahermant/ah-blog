@@ -159,5 +159,5 @@ describe('Logging in - Azure authentication', function () {
 
 ```
 
-Now the login command should start before your tests and record the MSAL data in your localstorage. 
+Now the login command should start before your tests and record the MSAL data in your localstorage. It will bypass the redirect and Cypress should test the rest of your application.
 
