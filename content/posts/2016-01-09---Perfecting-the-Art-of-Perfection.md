@@ -9,8 +9,10 @@ description: A few explanations on how to authenticate with Cypress on Azure
   MSAL 2.0 in a VueJS 2 application.
 category: VueJS
 tags:
-  - Handwriting
-  - Learning to write
+  - MSAL
+  - Cypress
+  - VueJS
+  - authentication
 ---
 Due to the multiple redirects and iframes, it can be pretty painful to authenticate with Cypress on an app with MSAL 2.0. However, it is possible to bypass the authentication step by using an Azure client secret.  
 If you use the MSAL mode `redirect` and get an access token to authenticate to your backend APIs, here is how:
@@ -38,14 +40,14 @@ Now create a Cypress command named `login`. We will use this command to call the
 
 ``` javascript
 Cypress.Commands.add("login", () => {
-    const clientId = Cypress.env('CLIENT_ID') // Your application client ID available in the overview of your app
+    const clientId = Cypress.env('CLIENT_ID') // The application client ID available in the overview of your app
     const clientSecret = Cypress.env('CLIENT_SECRET') // The client Id that you have generated
-    const localAccountId = Cypress.env('LOCAL_ACCOUNT_ID') // the localAccountId in the field mainTokenResponse of your localstorage when authenticated with the Cypress user account
-    const scope = Cypress.env('SCOPE') // the scope you want to connect to. For example User.Read   
+    const localAccountId = Cypress.env('LOCAL_ACCOUNT_ID') // The localAccountId in the field mainTokenResponse of your localstorage when authenticated with the Cypress user account
+    const scope = Cypress.env('SCOPE') // The scope you want to connect to. For example User.Read   
     const tenantId = Cypress.env('TENANT_ID') // directory (tenant) ID displayed in the Overview of your Azure app
     const username = Cypress.env('USERNAME') // The username displayed in the mainTokenResponse when you log in with this account
     const name = Cypress.env('NAME') // The name displayed in the mainTokenResponse when you log in with this account
-    const user = Cypress.env('USER') // Do not forget to set the user data that your application needs to work properly. The client secret is not linked to any user
+    const user = Cypress.env('USER') // Do not forget to set the user data that your application needs to work properly because the client secret is not linked to any user
 
     cy.request({
         method: 'POST',
@@ -69,8 +71,3 @@ Cypress.Commands.add("login", () => {
     })
 })
 ``` 
-
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. 
-
-Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
