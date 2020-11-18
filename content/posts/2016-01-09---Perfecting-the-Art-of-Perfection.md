@@ -3,7 +3,7 @@ template: post
 title: Use Cypress with VueJS and MSAL 2.0
 slug: cypress-vue-msal
 socialImage: /media/cypress.webp
-draft: true
+draft: false
 date: 2020-11-17T22:22:52.051Z
 description: A few explanations on how to authenticate with Cypress on Azure
   MSAL 2.0 in a VueJS 2 application.
