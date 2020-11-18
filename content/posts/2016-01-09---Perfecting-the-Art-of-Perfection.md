@@ -73,7 +73,8 @@ Now we do the request to get the token from the client secret
     }).then(response => {})
 ```
 
-When we get the response we set the extra variables we will need in our local storage
+When we get the response we set the extra variables we will need in our local storage.  
+The user variable is not needed by MSAL: you can replace it with any data your frontend needs to identify your test user (eg: name, email...)
 
 
 ``` javascript
@@ -131,4 +132,31 @@ Cypress.Commands.add("login", () => {
 })
 ``` 
 
+## Use the command
+
+In order to do use the command, et the following in your `support/index.js` file
+
+``` javascript
+import './commands'
+
+before(() => {
+    cy.clearLocalStorageSnapshot();
+});
+
+afterEach(() => {
+    cy.saveLocalStorage();
+});
+
+describe('Logging in - Azure authentication', function () {
+
+    context('Logs to ADAL', function () {
+        it('Sets the local storage to log to MSAL', function () {
+            cy.login()
+        })
+    })
+})
+
+```
+
+Now the login command should start before your tests and record the MSAL data in your localstorage. 
 
