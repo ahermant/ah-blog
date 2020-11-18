@@ -18,7 +18,7 @@ Due to the multiple redirects and iframes, it can be pretty painful to authentic
 If you use the MSAL mode `redirect` and get an [access token](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token) to authenticate to your backend APIs, here is a method.  
 It is far from ideal since the changes in the [msal-browser library](https://www.npmjs.com/package/@azure/msal-browser) can break the code but it can unblock a difficult situation.
 In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage".  
-If you need an example with some sessionstorage, please look to jabberwik's answer on [this thread](https://stackoverflow.com/a/63490929)  
+If you need an example with some "sessionstorage", please look to jabberwik's answer on [this thread](https://stackoverflow.com/a/63490929)  
 
 ## Pre-requisites
 To start we need an up and running VueJS application using the [msal-browser library](https://www.npmjs.com/package/@azure/msal-browser) to authenticate with MSAL 2.0.  
