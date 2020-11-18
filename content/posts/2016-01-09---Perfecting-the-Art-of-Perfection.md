@@ -34,9 +34,9 @@ Finally create Azure application secret for your app by following [this process]
 
 ## Command setup
 
-Next, if you do not already have one, create a `commands.js` file in the Cypress support folder (For more info about this folder location refer to the  [Cypress folder structure](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure).
+Next, if you do not already have one, create a `commands.js` file in the Cypress support folder (For more info about this folder location refer to the  [Cypress folder structure](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure)).
 
-In the `commands.js` file, import `cypress-localstorage-commands` to be able to use it.
+In the `commands.js` file, import `cypress-localstorage-commands` to be able to use some extra commands to manipulate the localStorage.
 
 `import "cypress-localstorage-commands"`
 
