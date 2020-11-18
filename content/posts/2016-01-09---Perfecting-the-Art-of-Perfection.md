@@ -104,7 +104,7 @@ The final command should look like this
 Cypress.Commands.add("login", () => {
     const tenantId = Cypress.env('TENANT_ID') // directory (tenant) ID displayed in the Overview of your Azure app
     const clientId = Cypress.env('CLIENT_ID') // The application client ID available in the overview of your app
-    const clientSecret = Cypress.env('CLIENT_SECRET') // The client Secret that you have generated
+    const applicationSecret = Cypress.env('APPLICATION_SECRET') // The client Secret that you have generated
     const scope = Cypress.env('SCOPE') // The scope you want to connect to. For example User.Read   
     cy.request({
         method: 'POST',
