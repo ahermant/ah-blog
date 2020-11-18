@@ -75,7 +75,7 @@ Now we request the access token with the [application secret](https://docs.micro
     }).then(response => {})
 ```
 
-When we get the response we set the extra variables we will need in our local storage.  
+When we get the response we set the extra variables MSAL needs in our local storage.  
 The user variable is not needed by MSAL: you can replace it with any data your frontend needs to identify your test user (eg: name, email...)
 
 
