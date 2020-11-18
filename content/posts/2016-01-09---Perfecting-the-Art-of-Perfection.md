@@ -53,7 +53,7 @@ Let us set some variables with the information we need to request the access tok
 Cypress.Commands.add("login", () => {
     const tenantId = Cypress.env('TENANT_ID') // directory (tenant) ID displayed in the Overview of your Azure app
     const clientId = Cypress.env('CLIENT_ID') // The application client ID available in the overview of your app
-    const clientSecret = Cypress.env('CLIENT_SECRET') // The client Secret that you have generated
+    const applicationSecret = Cypress.env('APPLICATION_SECRET') // The client Secret that you have generated
     const scope = Cypress.env('SCOPE') // The scope you want to connect to. For example User.Read   
 })
 ```
@@ -69,7 +69,7 @@ Now we do the request to get the access token with the [application secret](http
             grant_type: 'client_credentials',
             client_id: clientId,
             client_info: 1,
-            client_secret: clientSecret,
+            client_secret: applicationSecret,
             scope: [scope]
         }
     }).then(response => {})
@@ -83,7 +83,7 @@ The user variable is not needed by MSAL: you can replace it with any data your f
     const localAccountId = Cypress.env('LOCAL_ACCOUNT_ID') // The localAccountId in the field mainTokenResponse of your localstorage when authenticated with the Cypress user account
     const username = Cypress.env('USERNAME') // The username displayed in the mainTokenResponse when you log in with this account
     const name = Cypress.env('NAME') // The name displayed in the mainTokenResponse when you log in with this account
-    const user = Cypress.env('USER') // Do not forget to set the user data that your application needs to work properly because the client secret is not linked to any user
+    const user = Cypress.env('USER') // Do not forget to set the user data that your application needs to work properly because the application secret is not linked to any user
     const token = response.body.access_token;
     const clientInfo = response.body.client_info;
 ```
