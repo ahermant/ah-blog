@@ -19,7 +19,7 @@ If you use the MSAL mode `redirect` and get an access token to authenticate to y
 
 ## Pre-requisites
 To start we need an up and running VueJS application using the msal-browser library to authenticate with MSAL 2.0.  
-In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage".  
+In our example we will take as an hypothesis that the MSAL cacheLocation is set to "localstorage". If you need an example  
 To get some useful commands to manipulate the localstorage with Cypress we need to install the [Cypress localstorage commands module](https://www.npmjs.com/package/cypress-localstorage-commands).  
 
 It can be done with  
