@@ -47,7 +47,7 @@ Cypress.Commands.add("login", () => {
 })
 ```
 
-Let us set some variables with the information we need to request the access token. Here we will use the Cypress environments variable. To set them, just set some environment variableswith the `CYPRESS_` prefix on the environment used to launch Cypress.
+Let us set some variables with the information we need to request the access token. Here we will use the Cypress environments variable. To set them, just set some environment variables with the `CYPRESS_` prefix on the environment used to launch Cypress.
 
 ``` javascript
 Cypress.Commands.add("login", () => {
