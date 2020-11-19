@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.0] - 2018-11-19
+### Added
+- Activate Disqus comments
+
 ## [0.0.5] - 2018-11-19
 ### Added
 - [Article] Vue MSAL browser plugin

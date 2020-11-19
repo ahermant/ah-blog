@@ -6,9 +6,9 @@ module.exports = {
   title: 'Aymeric Hermant\'s dev blog',
   subtitle: 'Welcome to my blog, my name is Aymeric and I am a fullstack developer. It host here a few articles related to the challenges I face in my work or on my personal projects. Feel free to read and to send me your comments.',
   copyright: '© All rights reserved.',
-  disqusShortname: '',
+  disqusShortname: 'ah-blog-1',
   postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  googleAnalyticsId: 'G-K2J9GH0LVR',
   useKatex: false,
   menu: [
     {
