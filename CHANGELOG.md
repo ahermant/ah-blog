@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.0.5] - 2018-11-19
+### Added
+- [Article] Vue MSAL browser plugin
+
 ## [0.0.4] - 2018-11-18
 ### Added
 - [Article] MSAL context to the VueX store
