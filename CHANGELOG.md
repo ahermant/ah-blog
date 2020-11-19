@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.0.4] - 2018-11-18
+### Added
+- [Article] MSAL context to the VueX store
+
 ## [0.0.3] - 2018-11-18
 ### Changed
 - Change the social network link below the articles
