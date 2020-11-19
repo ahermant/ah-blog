@@ -39,16 +39,12 @@ Vue.use(msal, {
     authority: "<your-tenant-url>",
     redirectUri: "<your-redirect-url>",
     scopes: ["<your-scopes-separated-with-a-comma>"]
-  },
-  cache: {
-    cacheLocation: "localStorage"
-  },
-  mode: "redirect"
+  }
 });
 
 ```
 
-Since the msal context is defined in the plugin as a prototype, we should already be able to call `this.$msal` from our view components to get the MSAL context.
+Since the msal context is defined in the plugin as a prototype, we should already be able to call `this.$msal` from our view components to get it.
 
 ## Export the context
 
