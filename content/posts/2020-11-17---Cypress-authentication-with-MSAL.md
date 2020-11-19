@@ -144,7 +144,8 @@ import './commands'
 before(() => {
     cy.clearLocalStorageSnapshot();
 });
-
+
+
 afterEach(() => {
     cy.saveLocalStorage();
 });
