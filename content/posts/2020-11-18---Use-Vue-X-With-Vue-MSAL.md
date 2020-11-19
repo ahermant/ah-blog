@@ -39,11 +39,7 @@ Vue.use(msal, {
     authority: "<your-tenant-url>",
     redirectUri: "<your-redirect-url>",
     scopes: ["<your-scopes-separated-with-a-comma>"]
-  },
-  cache: {
-    cacheLocation: "localStorage"
-  },
-  mode: "redirect"
+  }
 });
 
 ```
