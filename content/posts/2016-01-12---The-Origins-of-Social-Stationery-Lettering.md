@@ -33,6 +33,8 @@ You can install them by using NPM with the following command:
 
 `npm install @azure/msal-browser msal`
 
+## Plugin setup
+
 ## Header Level 2
 
 * Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
