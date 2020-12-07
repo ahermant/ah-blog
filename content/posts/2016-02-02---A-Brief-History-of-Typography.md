@@ -23,6 +23,9 @@ Let's start from a simple semantic-release config file. For example, this `.rele
 
 ```
 {
+    "repositoryUrl":"https://git.ah-blog.com/ah-blog",
+    "branches":{
+    }
 
 }
 ```
