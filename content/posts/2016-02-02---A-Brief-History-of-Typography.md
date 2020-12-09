@@ -79,4 +79,39 @@ Now change the `CHANGELOG.md` file name in each `.releaserc` file to the file na
 
 ## Step 2: Get the right file at the right time
 
-Now, edit your CI pipeline to change the filename. To do so you can use a base job and extend it once for each environment
+Now, edit your CI pipeline to change the filename. To do so you can use a base job and extend it once for each environment:
+
+```
+.build_base:
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - mv ./semantic-release/.releaserc.$CONFIG_TYPE .releaserc
+    - yarn install
+    - yarn run build:$CONFIG_TYPE
+    - npx semantic-release
+  artifacts:
+    paths:
+      - ./dist
+    expire_in: 1 week
+  rules:
+    -if: $CI_COMMIT_BRANCH == $CONFIG_TYPE
+
+build_dev:
+  extends: .build_base
+  variables:
+    CONFIG_TYPE: dev
+
+build_staging:
+  extends: .build_base
+  variables:
+    CONFIG_TYPE: staging
+
+build_master:
+  extends: .build_base
+  variables:
+    CONFIG_TYPE: master
+```
+
+Now, for each of your build jobs, the Gitlab runner will copy the `.releaserc` file with the right CHANGELOG name and a different changelog file will be used for each of your builds. 
