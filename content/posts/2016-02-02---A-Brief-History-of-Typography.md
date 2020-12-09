@@ -15,7 +15,7 @@ tags:
   - changelog
 ---
 [Semantic-release](https://github.com/semantic-release/semantic-release) is a great tool to manage automatically your semver versions. On top of it it can update your changelogs automatically thanks to the [changelog plugin](https://github.com/semantic-release/changelog).
-However some problems may occur if you want to manage several changelogs in parallel: for example one for your DEV branch, one another for your STAGING branch and one last one for your PRODUCTION branch.
+However some problems may occur if you want to manage several changelogs in parallel: for example one for your a branch with the full version of your app and one another for the light version.
 
 ## Pre-requisites
 
