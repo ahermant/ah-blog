@@ -3,7 +3,7 @@ template: post
 title: "Semantic-release: Build different Changelog files for DEV, STAGING and PROD"
 slug: semantic-release-multiple-changelog
 socialImage: /media/semantic-release-logo.png
-draft: true
+draft: false
 date: 2020-12-07T19:47:02.519Z
 description: Explanation of a trick to get one CHANGELOG file per environment
   with semantic-release
