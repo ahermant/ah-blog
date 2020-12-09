@@ -24,8 +24,38 @@ Let's start from a simple semantic-release config file. For example, this `.rele
 ```
 {
     "repositoryUrl":"https://git.ah-blog.com/ah-blog",
-    "branches":{
-    }
+    "branches":[
+        {
+            "name":"master"  
+        },
+        {
+            "name":"staging",
+            "prerelease":"staging"
+        },
+        {
+            "name":"dev",
+            "prerelease":"dev"
+        }
+    ],
 
-}
+   "plugins":[
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+         "@semantic-release/changelog",
+         {
+            "changelogFile":"CHANGELOG.md",
+            "changelogTitle":"Semantic Release Changelog"
+         }
+      ],
+      [
+         "@semantic-release/git",
+         {
+            "assets":[
+               "CHANGELOG.md"
+            ]
+         }
+      ]
+   ]
+}
 ```
